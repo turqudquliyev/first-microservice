@@ -46,7 +46,7 @@ Here are two simple RESTful web services. Microservices communicate with Feign C
    git clone https://github.com/turqudquliyev/microservice.git
    ```
 
-2. First unzip the project then open terminal and go to microservice directory
+2. Go to microservice directory
    ```bash
    cd microservice
    ```
