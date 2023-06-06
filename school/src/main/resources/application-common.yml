@@ -1,0 +1,12 @@
+server:
+  port: 8282
+  servlet:
+    context-path: /v1
+student:
+  url: http://localhost:8181/v1/students
+feign:
+  client:
+    config:
+      default:
+        connectionTimeout: 160000000
+        readTimeout: 160000000

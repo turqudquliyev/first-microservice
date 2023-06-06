@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create school table
+      author: Turgud Guliyev
+      changes:
+        - createTable:
+            tableName: schools
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(32)
+                  remarks: name of school
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(32)
+                  remarks: email of school
+                  constraints:
+                    nullable: false
+            remarks: Table to store information about schools

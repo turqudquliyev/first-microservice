@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:1234/school
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    show-sql: true
+    generate-ddl: true
+  liquibase:
+    enabled: true
+    drop-first: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml

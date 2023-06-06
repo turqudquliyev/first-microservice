@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      runOnChange: true
+      id: insert into schools table mock data
+      author: Turgud Guliyev
+      changes:
+        - sql:
+            sql: CREATE SEQUENCE school_sequence START WITH 3 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
+        - sql:
+            sql: INSERT INTO schools (id, name, email) VALUES (1,'ADNSU','info@adnsu.com');
+        - sql:
+            sql: INSERT INTO schools (id, name, email) VALUES (2,'ADBTIA','info@adbtia.com');

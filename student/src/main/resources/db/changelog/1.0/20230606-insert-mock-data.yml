@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      runOnChange: true
+      id: insert student table mock data
+      author: Turgud Guliyev
+      changes:
+        - sql:
+            sql: CREATE SEQUENCE student_sequence START WITH 6 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
+        - sql:
+            sql: INSERT INTO students (id, first_name, last_name, age, email, school_id) VALUES (1,'Turqud','Quliyev',20,'turqudquliyev@gmail.com',1);
+        - sql:
+            sql: INSERT INTO students (id, first_name, last_name, age, email, school_id) VALUES (2,'Cahid','Quliyev',16,'cahidquliyev@gmail.com',2);
+        - sql:
+            sql: INSERT INTO students (id, first_name, last_name, age, email, school_id) VALUES (3,'Mursel','Semedov',20,'murselsemedov@gmail.com',1);
+        - sql:
+            sql: INSERT INTO students (id, first_name, last_name, age, email, school_id) VALUES (4,'Kamal','Aliyev',20,'kamalaliyev@gmail.com',1);
+        - sql:
+            sql: INSERT INTO students (id, first_name, last_name, age, email, school_id) VALUES (5,'Ali','Panayev',20,'alipanayev@gmail.com',1);

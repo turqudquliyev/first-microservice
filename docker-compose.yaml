@@ -1,0 +1,85 @@
+version: '3.8'
+services:
+  school-app:
+    container_name: school-ms
+    build:
+      context: ./school
+      dockerfile: Dockerfile
+    ports:
+      - "8282:8282"
+    depends_on:
+      - school-db
+    environment:
+      - STUDENT_URL=student-app:8181/v1/students
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://school-db:5432/school
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+    networks:
+      - mynetwork
+  school-db:
+    container_name: school-db
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=school
+    ports:
+      - "1234:5432"
+    volumes:
+      - school_db_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+  student-app:
+    container_name: student-ms
+    build:
+      context: ./student
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8181"
+    depends_on:
+      - student-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://student-db:5432/student
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+    networks:
+      - mynetwork
+  student-db:
+    container_name: student-db
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=student
+    ports:
+      - "2345:5432"
+    volumes:
+      - student_db_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=root@pgadmin.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+      - PGADMIN_CONFIG_SERVER_MODE=True
+      - PGADMIN_SERVER_JSON_FILE=/pgadmin4/servers.json
+    depends_on:
+      - student-db
+      - school-db
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+      - pgadmin:/var/lib/pgadmin
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
+volumes:
+  school_db_data:
+  student_db_data:
+  pgadmin:

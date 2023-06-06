@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: create student table
+      author: Turgud Guliyev
+      changes:
+        - createTable:
+            tableName: students
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(32)
+                  remarks: first name of student
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(32)
+                  remarks: last name of student
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: int
+                  remarks: age of student
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+                  remarks: email of student
+              - column:
+                  name: school_id
+                  type: bigint
+                  remarks: school id of student
+                  constraints:
+                    nullable: false
+            remarks: Table to store information about students

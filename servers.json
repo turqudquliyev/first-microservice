@@ -1,0 +1,24 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "student",
+      "Group": "Servers",
+      "Host": "student-db",
+      "Port": 5432,
+      "MaintenanceDB": "student",
+      "Username": "root",
+      "Password": "password",
+      "SSLMode": "prefer"
+    },
+    "2": {
+      "Name": "school",
+      "Group": "Servers",
+      "Host": "school-db",
+      "Port": 5432,
+      "MaintenanceDB": "school",
+      "Username": "root",
+      "Password": "password",
+      "SSLMode": "prefer"
+    }
+  }
+}
