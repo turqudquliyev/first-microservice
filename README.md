@@ -1,4 +1,4 @@
-# School and Student Microservices
+# Student and School Microservices
 
 ## Description
 Here are two simple RESTful web services. Microservices communicate with Feign Client between them.
